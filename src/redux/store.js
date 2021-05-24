@@ -6,16 +6,25 @@ const initialState = {
 		name: 'pikachu',
 		sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png'
 	},
-	box: []
+	box: [],
+	wildPokemon: []
 };
 
 const reducer = (state = initialState, action) => {
+
 	switch (action.type) {
 		case 'pokemon/new':
 			return {
 				...state,
-				box: [...state.box, action.pokemon]
+				wildPokemon: [...state.wildPokemon, action.pokemon]
 			};
+
+		case 'pokemon/add':
+			return {
+				...state,
+				box: [...state.box, state.wildPokemon[0]],
+				wildPokemon: state.wildPokemon.slice(1)
+			}
 
 		case 'pokemon/switch':
 			return {

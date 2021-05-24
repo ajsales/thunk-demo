@@ -1,8 +1,8 @@
-export const fetchPokemon = (index) => {
+const fetchPokemon = (index) => {
 	return fetch('https://pokeapi.co/api/v2/pokemon/' + index);
 };
 
-export const newPokemonSync = (pokemon) => {
+const newPokemonSync = (pokemon) => {
 	return {
 		type: 'pokemon/new',
 		pokemon
@@ -20,6 +20,12 @@ export const newPokemon = (index) => {
 		};
 		dispatch(newPokemonSync(pokemon));
 	};
+};
+
+export const addPokemon = () => {
+	return {
+		type: 'pokemon/add'
+	}
 }
 
 export const switchPokemon = (index) => {
